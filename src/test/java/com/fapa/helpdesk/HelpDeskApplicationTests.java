@@ -12,8 +12,4 @@ public class HelpDeskApplicationTests {
 	public void contextLoads() {
 	}
 	
-	public void meuCodigo() {
-		
-	}
-
 }
