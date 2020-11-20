@@ -11,5 +11,9 @@ public class HelpDeskApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
+	
+	public void meuCodigo() {
+		
+	}
 
 }
