@@ -20,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.fapa.helpdesk.api.security.jwt.JwtAuthenticationEntryPoint;
 import com.fapa.helpdesk.api.security.jwt.JwtAuthenticationTokenFilter;
 
+@SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
