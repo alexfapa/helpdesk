@@ -1,10 +1,7 @@
 package com.fapa.helpdesk.api.repository;
 
-import org.springframework.data.domain.Pageable;
-
-
-
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.fapa.helpdesk.api.entity.Ticket;
