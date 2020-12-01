@@ -1,11 +1,10 @@
 package com.fapa.helpdesk.api.service.impl;
 
-import java.awt.print.Pageable;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.fapa.helpdesk.api.entity.ChangeStatus;
@@ -13,6 +12,7 @@ import com.fapa.helpdesk.api.entity.Ticket;
 import com.fapa.helpdesk.api.repository.ChangeStatusRepository;
 import com.fapa.helpdesk.api.repository.TicketRepository;
 import com.fapa.helpdesk.api.service.TicketService;
+
 
 @Service
 public class TicketServiceImpl implements TicketService{
@@ -42,9 +42,7 @@ public class TicketServiceImpl implements TicketService{
 	@Override
 	public Page<Ticket> listTicket(int page, int count) {
 		Pageable pages = (Pageable) new PageRequest(page, count);
-		
-		return this.changeStatusRepository.findAll(pages);
-		
+		return this.ticketRepository.findAll(pages);
 	}
 
 	@Override
