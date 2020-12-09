@@ -9,9 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class JwtUser implements UserDetails {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7114933904556266812L;
 	
 	private final String id;

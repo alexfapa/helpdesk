@@ -30,10 +30,10 @@ public interface TicketService {
 	Page<Ticket> findByCurrentUser(int page, int count, String userId);
 	
 	//listagem de chamados por parâmetros no caso por status ou por prioridade
-	Page<Ticket> findByParameters(int page, int count, String status, String priority);
+	Page<Ticket> findByParameters(int page, int count, String title, String status, String priority);
 	
 	//listagem de chamados por parâmetros no caso por status ou por prioridade levando em consideração o usuário corrente
-	Page<Ticket> findByParametersAndCurrentUser(int page, int count, String status, String priority, String userId);	
+	Page<Ticket> findByParametersAndCurrentUser(int page, int count, String title, String status, String priority, String userId);	
 	
 	//listagem de chamados pelo número do chamado
 	Page<Ticket> findByNumber(int page, int count, Integer number);

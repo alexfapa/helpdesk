@@ -37,9 +37,9 @@ public class JwtAuthenticarionRequest  implements Serializable{
 		this.password = password;
 	}
 
-	/*public static long getSerialversionuid() {
+	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}*/
+	}
 	
 	
 
