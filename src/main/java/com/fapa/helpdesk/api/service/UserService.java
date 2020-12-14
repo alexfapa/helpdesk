@@ -1,9 +1,11 @@
 package com.fapa.helpdesk.api.service;
 
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Component;
 
 import com.fapa.helpdesk.api.entity.User;
 
+@Component
 public interface UserService {
 	
 	User findByEmail(String email);

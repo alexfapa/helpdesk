@@ -1,6 +1,6 @@
 package com.fapa.helpdesk.api.controller;
 
-import javax.servlet.http.HttpServlet;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,7 +103,7 @@ public class UserController {
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	private ResponseEntity<Response<User>> findById(@PathVariable("id") String id){
 		Response<User> response = new Response<User>();
-		User user = userService.findById(id);
+		User user = (User) userService.findById(id); 
 		if(user == null) {
 			response.getErros().add("Register not foud id: "+id);
 			return ResponseEntity.badRequest().body(response);

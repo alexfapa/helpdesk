@@ -1,8 +1,5 @@
 package com.fapa.helpdesk.api.service.impl;
 
-import java.awt.print.Pageable;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,7 +13,7 @@ import com.fapa.helpdesk.api.service.UserService;
 public class UserServiceImpl implements UserService{
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserRepository userRepository = null;
 	
 	
 	public User findByEmail(String email) {
@@ -28,7 +25,7 @@ public class UserServiceImpl implements UserService{
 		return this.userRepository.save(user);
 	}
 
-	@Override
+	
 	public User findById(String id) {
 		return this.userRepository.findOne(id);
 	}

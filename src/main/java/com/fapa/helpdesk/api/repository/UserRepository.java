@@ -8,4 +8,5 @@ import com.fapa.helpdesk.api.entity.User;
 
 public interface UserRepository extends MongoRepository<User, String>{
 	User findByEmail(String email);
+	
 }
