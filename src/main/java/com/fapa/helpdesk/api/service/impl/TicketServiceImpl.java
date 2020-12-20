@@ -53,7 +53,6 @@ public class TicketServiceImpl implements TicketService{
 	@Override
 	public Iterable<ChangeStatus> listChangeStatus(String ticketId) {
 		return this.changeStatusRepository.findByTicketIdOrderByDateChangeStatus(ticketId);
-		//verificar se não é findByTicketIdOrderByDateChangeStatusDesc
 	}
 
 	@Override
@@ -72,7 +71,7 @@ public class TicketServiceImpl implements TicketService{
 	public Page<Ticket> findByParametersAndCurrentUser(int page, int count, String title, String status, String priority, String userId) {
 		Pageable pages = (Pageable) new PageRequest(page, count);
 		return this.
-				ticketRepository.findByTitleIgnoreCaseContainingAndStatusAndPriorityAndUserIdOrderByDataDesc(title, status, priority, pages);
+				ticketRepository.findByTitleIgnoreCaseContainingAndStatusAndPriorityAndUserIdOrderByDataDesc(title, status, priority, userId, pages);
 	}
 
 	@Override
@@ -90,7 +89,7 @@ public class TicketServiceImpl implements TicketService{
 	public Page<Ticket> findByParameterAndAssignedUser(int page, int count, String title, String status,
 			String priority, String assignedUser) {
 		Pageable pages = new PageRequest(page, count);
-		return this.ticketRepository.findByTitleIgnoreCaseContainingAndStatusAndPriorityAndAssignedUserIdOrderByDataDesc(title, status, priority, pages);
+		return this.ticketRepository.findByTitleIgnoreCaseContainingAndStatusAndPriorityAndAssignedUserIdOrderByDataDesc(title, status, priority, assignedUser,  pages);
 	}
 	
 }

@@ -5,6 +5,7 @@ public enum StatusEnum {
 	Resolved,
 	Approved,
 	Disapproved,
+	Assigned,
 	Closed;
 	
 	public static StatusEnum getStatus(String status) {
@@ -13,6 +14,7 @@ public enum StatusEnum {
 			case "Resolved": return Resolved;
 			case "Approved": return Approved;
 			case "Disapproved": return Disapproved;
+			case "Assigned": return Assigned;
 			case "Closed": return Closed;
 
 			default:

@@ -4,6 +4,7 @@ package com.fapa.helpdesk.api.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,10 +24,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fapa.helpdesk.api.entity.User;
 import com.fapa.helpdesk.api.response.Response;
 import com.fapa.helpdesk.api.service.UserService;
-import com.mongodb.DuplicateKeyException;
+
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 @CrossOrigin(origins = "*")
 public class UserController {
 	
@@ -51,7 +52,7 @@ public class UserController {
 			User userPersisted = (User) userService.createOrUpdate(user);
 			response.setData(userPersisted);
 		}catch(DuplicateKeyException dE) {
-			response.getErros().add("E-mail already exists");
+			response.getErros().add("Email já cadastrado!");
 			return ResponseEntity.badRequest().body(response);
 		}catch(Exception e) {
 			response.getErros().add(e.getMessage());
@@ -101,7 +102,7 @@ public class UserController {
 	
 	@GetMapping(value = "{id}")
 	@PreAuthorize("hasAnyRole('ADMIN')")
-	private ResponseEntity<Response<User>> findById(@PathVariable("id") String id){
+	public ResponseEntity<Response<User>> findById(@PathVariable("id") String id){
 		
 		Response<User> response = new Response<User>();
 		
@@ -115,9 +116,9 @@ public class UserController {
 		return ResponseEntity.ok(response);
 	}
 	
-	@DeleteMapping(value = "{id}")
+	@DeleteMapping(value = "/{id}")
 	@PreAuthorize("hasAnyRole('ADMIN')")
-	private ResponseEntity<Response<String>> delete(@PathVariable("id") String id){
+	public ResponseEntity<Response<String>> delete(@PathVariable("id") String id){
 		Response<String> response = new Response<String>();
 		User user = userService.findById(id);
 		if(user == null) {
