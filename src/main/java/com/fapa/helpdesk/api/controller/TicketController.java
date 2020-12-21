@@ -235,7 +235,7 @@ public class TicketController {
 	}
 	
 	@PutMapping(value = "{id}/{status}")
-	@PreAuthorize("hasAnyRole('CUSTOMER', 'TECHNICIAN')")
+	@PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
 	public 	ResponseEntity<Response<Ticket>> changeStatus(
 			@PathVariable("id") String id,
 			@PathVariable("status") String status,
@@ -251,7 +251,7 @@ public class TicketController {
 				result.getAllErrors().forEach(error -> response.getErros().add(error.getDefaultMessage()));
 				return ResponseEntity.badRequest().body(response);
 			}
-			Ticket ticketCurrent = ticketService.findById(ticket.getId());
+			Ticket ticketCurrent = ticketService.findById(id);
 			ticketCurrent.setStatus(StatusEnum.getStatus(status));
 			if(status.equals("Assigned")) {
 				ticketCurrent.setAssignedUser(userFromRequest(request));
